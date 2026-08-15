@@ -1,0 +1,16 @@
+using Unity.Behavior.GraphFramework;
+
+namespace Unity.Behavior
+{
+    internal class SetNodeVariableValueCommandHandler : CommandHandler<SetNodeVariableValueCommand>
+    {
+        public override bool Process(SetNodeVariableValueCommand command)
+        {
+            BehaviorGraphNodeModel behaviorNodeModel = command.NodeModel as BehaviorGraphNodeModel;
+            behaviorNodeModel?.SetField(command.VariableName, command.Value);
+
+            // Have we processed the command and wish to block further processing?
+            return true;
+        }
+    }
+}

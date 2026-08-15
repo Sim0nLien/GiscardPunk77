@@ -1,0 +1,13 @@
+{
+  "name": "GiscardPunk77.AI.PlayMode.Tests",
+  "rootNamespace": "GiscardPunk77.AI.PlayMode.Tests",
+  "references": [
+    "GiscardPunk77.Core",
+    "GiscardPunk77.Gameplay",
+    "GiscardPunk77.AI"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "autoReferenced": false
+}

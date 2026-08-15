@@ -51,6 +51,7 @@ ExportedObj/
 *.csproj
 *.unityproj
 *.sln
+*.slnx
 *.suo
 *.tmp
 *.user
@@ -62,6 +63,33 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+
+# JetBrains IDE caches (Rider project settings in *.DotSettings.user are handled above)
+.idea/
+.fleet/
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Local editor backups and merge leftovers
+*~
+*.swp
+*.swo
+*.orig
+
+# Local test, coverage and profiling output
+/[Tt]est[Rr]esults/
+/[Pp]erformance[Tt]est[Rr]esults/
+/[Cc]ode[Cc]overage/
+/[Cc]overage[Rr]esults/
+/[Pp]rofiler/
+
+# Local crash dumps; Unity's text crash metadata is handled below
+/[Cc]rash[Rr]eports/
+*.dmp
 
 # Unity3D generated meta files
 *.pidb.meta

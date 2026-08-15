@@ -1,0 +1,14 @@
+{
+  "name": "GiscardPunk77.Core.Tests",
+  "rootNamespace": "GiscardPunk77.Core.Tests",
+  "references": [
+    "GiscardPunk77.Core"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "autoReferenced": false
+}

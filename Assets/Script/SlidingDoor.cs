@@ -1,3 +1,5 @@
+using System;
+using GiscardPunk77.Gameplay.Doors;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,7 +7,7 @@ using UnityEngine.InputSystem;
 /// Porte coulissante activable avec la touche E.
 /// A associer directement a l'objet Door.
 /// </summary>
-public class SlidingDoor : MonoBehaviour
+public class SlidingDoor : MonoBehaviour, IDoorPassage
 {
     [Header("Interaction")]
     [SerializeField] private Camera playerCamera;
@@ -17,11 +19,36 @@ public class SlidingDoor : MonoBehaviour
     [SerializeField, Min(0f)] private float slideDistance = 2f;
     [SerializeField, Min(0.01f)] private float slideSpeed = 3f;
 
+    [Header("Passage commun")]
+    [SerializeField] private Transform waitingPointA;
+    [SerializeField] private Transform waitingPointB;
+    [SerializeField, Min(0.1f)] private float reservationLifetime = 5f;
+    [SerializeField, Min(0.001f)] private float passableTolerance = 0.05f;
+
     private InputAction interactAction;
     private Rigidbody doorBody;
+    private readonly DoorReservationQueue reservations = new DoorReservationQueue();
     private Vector3 closedPosition;
     private Vector3 openPosition;
     private bool isOpen;
+    private bool isPassable;
+    private bool hasPublishedState;
+    private DoorPassageState lastPublishedState;
+
+    public bool CanUse => isActiveAndEnabled
+        && doorBody != null
+        && waitingPointA != null
+        && waitingPointB != null;
+
+    public bool IsPassable => CanUse && isPassable;
+
+    public Transform WaitingPointA => waitingPointA;
+
+    public Transform WaitingPointB => waitingPointB;
+
+    public event Action<DoorPassageState> StateChanged;
+
+    public event Action<object> ReservationChanged;
 
     private void Awake()
     {
@@ -56,16 +83,20 @@ public class SlidingDoor : MonoBehaviour
         openPosition = closedPosition + direction * slideDistance;
 
         interactAction = new InputAction("Interact", InputActionType.Button, "<Keyboard>/e");
+        UpdatePassability(transform.localPosition);
     }
 
     private void OnEnable()
     {
         interactAction?.Enable();
+        PublishStateIfChanged(true);
     }
 
     private void OnDisable()
     {
         interactAction?.Disable();
+        reservations.Clear();
+        PublishStateIfChanged(true);
     }
 
     private void OnDestroy()
@@ -75,9 +106,14 @@ public class SlidingDoor : MonoBehaviour
 
     private void Update()
     {
+        if (reservations.RemoveExpired(Time.time) > 0)
+        {
+            PublishStateIfChanged();
+        }
+
         if (playerCamera != null && interactAction.WasPressedThisFrame() && IsPlayerLookingAtDoor())
         {
-            isOpen = !isOpen;
+            SetOpenRequested(!isOpen);
         }
     }
 
@@ -91,6 +127,8 @@ public class SlidingDoor : MonoBehaviour
 
         if ((nextLocalPosition - transform.localPosition).sqrMagnitude < 0.000001f)
         {
+            UpdatePassability(transform.localPosition);
+            PublishStateIfChanged();
             return;
         }
 
@@ -98,6 +136,74 @@ public class SlidingDoor : MonoBehaviour
             ? transform.parent.TransformPoint(nextLocalPosition)
             : nextLocalPosition;
         doorBody.MovePosition(nextWorldPosition);
+        UpdatePassability(nextLocalPosition);
+        PublishStateIfChanged();
+    }
+
+    public bool RequestOpen()
+    {
+        if (!CanUse)
+        {
+            return false;
+        }
+
+        SetOpenRequested(true);
+        return true;
+    }
+
+    public bool TryReserve(object owner)
+    {
+        if (!CanUse)
+        {
+            return false;
+        }
+
+        var granted = reservations.TryReserve(owner, Time.time, reservationLifetime);
+        PublishStateIfChanged();
+        return granted;
+    }
+
+    public bool IsReservedBy(object owner)
+    {
+        return reservations.IsReservedBy(owner);
+    }
+
+    public void Release(object owner)
+    {
+        if (reservations.Release(owner))
+        {
+            PublishStateIfChanged();
+        }
+    }
+
+    public void ResetPassage()
+    {
+        reservations.Clear();
+        SetOpenRequested(false);
+        PublishStateIfChanged(true);
+    }
+
+    public void ConfigurePassage(Transform pointA, Transform pointB, float lifetime)
+    {
+        waitingPointA = pointA;
+        waitingPointB = pointB;
+        reservationLifetime = Mathf.Max(0.1f, lifetime);
+        PublishStateIfChanged(true);
+    }
+
+    public void ConfigureMovement(Vector3 direction, float distance, float speed)
+    {
+        slideDirection = direction.sqrMagnitude > 0f ? direction.normalized : Vector3.right;
+        slideDistance = Mathf.Max(0f, distance);
+        slideSpeed = Mathf.Max(0.01f, speed);
+
+        if (doorBody != null)
+        {
+            closedPosition = transform.localPosition;
+            openPosition = closedPosition + slideDirection * slideDistance;
+            UpdatePassability(transform.localPosition);
+            PublishStateIfChanged(true);
+        }
     }
 
     private bool IsPlayerLookingAtDoor()
@@ -110,5 +216,61 @@ public class SlidingDoor : MonoBehaviour
         }
 
         return hit.transform == transform || hit.transform.IsChildOf(transform);
+    }
+
+    private void OnValidate()
+    {
+        reservationLifetime = Mathf.Max(0.1f, reservationLifetime);
+        passableTolerance = Mathf.Max(0.001f, passableTolerance);
+        slideSpeed = Mathf.Max(0.01f, slideSpeed);
+        slideDistance = Mathf.Max(0f, slideDistance);
+    }
+
+    private void SetOpenRequested(bool requestedOpen)
+    {
+        if (isOpen == requestedOpen)
+        {
+            return;
+        }
+
+        isOpen = requestedOpen;
+        if (!requestedOpen)
+        {
+            isPassable = false;
+        }
+
+        PublishStateIfChanged();
+    }
+
+    private void UpdatePassability(Vector3 evaluatedLocalPosition)
+    {
+        isPassable = isOpen
+            && (evaluatedLocalPosition - openPosition).sqrMagnitude <= passableTolerance * passableTolerance;
+    }
+
+    private void PublishStateIfChanged(bool force = false)
+    {
+        var state = new DoorPassageState(
+            CanUse,
+            isOpen,
+            IsPassable,
+            reservations.ActiveOwner,
+            reservations.Count);
+
+        if (!force && hasPublishedState && lastPublishedState.Equals(state))
+        {
+            return;
+        }
+
+        var ownerChanged = !hasPublishedState
+            || !ReferenceEquals(lastPublishedState.ReservationOwner, state.ReservationOwner);
+        lastPublishedState = state;
+        hasPublishedState = true;
+        StateChanged?.Invoke(state);
+
+        if (ownerChanged)
+        {
+            ReservationChanged?.Invoke(state.ReservationOwner);
+        }
     }
 }

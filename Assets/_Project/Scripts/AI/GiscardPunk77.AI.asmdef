@@ -1,0 +1,10 @@
+{
+  "name": "GiscardPunk77.AI",
+  "rootNamespace": "GiscardPunk77.AI",
+  "references": [
+    "GiscardPunk77.Core",
+    "GiscardPunk77.Gameplay",
+    "Unity.Behavior"
+  ],
+  "autoReferenced": true
+}

@@ -1,0 +1,8 @@
+{
+  "name": "GiscardPunk77.Gameplay",
+  "rootNamespace": "GiscardPunk77.Gameplay",
+  "references": [
+    "GiscardPunk77.Core"
+  ],
+  "autoReferenced": true
+}

@@ -711,7 +711,7 @@ Ce n'est ni un crédit OpenAI, ni un token, ni un pourcentage garanti. Cela sert
 | P17 | Sol | high | très élevée | 4–7 U |
 | P18 | Sol | xhigh | très élevée renforcée | 6–10 U |
 | P19 | Sol | high | très élevée | 2–4 U |
-| **Total** | **7 lots Terra / 13 lots Sol** | — | — | **environ 71–124 U** |
+| **Total** | **8 lots Terra / 12 lots Sol** | — | — | **environ 71–124 U** |
 
 La fourchette basse correspond à une bonne compilation du premier coup et des validations humaines rapides. La haute suppose plusieurs corrections Unity, surtout sur P04, P06, P10, P13, P16 et P18.
 

@@ -1,8 +1,9 @@
+using GiscardPunk77.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IVisibilityTarget
 {
     [Header("Movement")]
     [SerializeField, Min(0f)] private float speed = 4f;
@@ -36,6 +37,10 @@ public class PlayerController : MonoBehaviour
     private bool isCrouching;
 
     public bool IsCrouching => isCrouching;
+
+    public Vector3 VisibilityPoint => playerCamera != null
+        ? playerCamera.transform.position
+        : transform.position;
 
     private void Awake()
     {
