@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using GiscardPunk77.AI.Behavior;
+using GiscardPunk77.AI.Behavior.Guard;
+using GiscardPunk77.AI.Behavior.Guard.Nodes;
 using GiscardPunk77.AI.Behavior.Nodes;
 using UnityEditor;
 using UnityEngine;
@@ -17,6 +19,7 @@ namespace GiscardPunk77.Editor
     public static class NpcBehaviorGraphAuthoring
     {
         public const string GraphPath = "Assets/_Project/Config/AI/P10 Minimal NPC Behavior.asset";
+        public const string GuardGraphPath = "Assets/_Project/Config/AI/P11 Guard Routine.asset";
 
         private const BindingFlags PublicInstance = BindingFlags.Public | BindingFlags.Instance;
         private const BindingFlags AnyInstance =
@@ -110,6 +113,95 @@ namespace GiscardPunk77.Editor
                     "P10 could not create the minimal Behavior graph. " +
                     "Its partial asset was removed. Confirm that Behavior 1.0.13 compiles, " +
                     "then read the first inner error.\n" +
+                    Unwrap(exception));
+            }
+        }
+
+        [MenuItem("Tools/GiscardPunk77/P11/Create or Open Guard Behavior Graph")]
+        public static void CreateOrOpenGuardGraph()
+        {
+            var createdAsset = false;
+            try
+            {
+                var graphType = RequireType(
+                    "Unity.Behavior.BehaviorAuthoringGraph",
+                    "Unity.Behavior.Authoring");
+                var existing = AssetDatabase.LoadMainAssetAtPath(GuardGraphPath);
+                if (existing != null)
+                {
+                    if (!graphType.IsInstanceOfType(existing))
+                    {
+                        Debug.LogError(
+                            $"P11 cannot create its graph because another asset already exists at {GuardGraphPath}.",
+                            existing);
+                        return;
+                    }
+
+                    Selection.activeObject = existing;
+                    AssetDatabase.OpenAsset(existing);
+                    Debug.Log("P11 Guard graph already exists; it was opened without being overwritten.", existing);
+                    return;
+                }
+
+                EnsureFolder("Assets/_Project/Config/AI");
+                var graph = ScriptableObject.CreateInstance(graphType);
+                graph.name = "P11 Guard Routine";
+                AssetDatabase.CreateAsset(graph, GuardGraphPath);
+                createdAsset = true;
+                InvokeRequired(graph, "ValidateAsset");
+
+                var blackboard = graphType.GetField("Blackboard", PublicInstance)?.GetValue(graph)
+                    ?? throw new InvalidOperationException("Guard graph did not create its authoring blackboard.");
+                var guardContextVariable = AddVariable(blackboard, "Guard Context", typeof(GuardContext), true, null);
+
+                var nodes = GetEnumerableProperty(graph, "Nodes");
+                var startNode = nodes.Cast<object>().FirstOrDefault(node => node.GetType().Name == "StartNodeModel")
+                    ?? throw new InvalidOperationException("Guard graph did not create its Start node.");
+                var startOutput = GetFirstOutputPort(startNode);
+
+                var routine = AddNode(graph, typeof(GuardRoutineComposite), new Vector2(0f, 180f), startOutput);
+                LinkField(routine, "Context", guardContextVariable, typeof(GuardContext));
+                var routineOutput = GetFirstOutputPort(routine);
+
+                var idle = AddNode(graph, typeof(GuardIdleAction), new Vector2(-480f, 400f), routineOutput);
+                LinkField(idle, "Context", guardContextVariable, typeof(GuardContext));
+
+                var patrol = AddNode(graph, typeof(GuardPatrolAction), new Vector2(-160f, 400f), routineOutput);
+                LinkField(patrol, "Context", guardContextVariable, typeof(GuardContext));
+
+                var suspicious = AddNode(graph, typeof(GuardSuspiciousAction), new Vector2(160f, 400f), routineOutput);
+                LinkField(suspicious, "Context", guardContextVariable, typeof(GuardContext));
+
+                var investigate = AddNode(
+                    graph,
+                    typeof(GuardInvestigateLastKnownPositionAction),
+                    new Vector2(480f, 400f),
+                    routineOutput);
+                LinkField(investigate, "Context", guardContextVariable, typeof(GuardContext));
+
+                InvokeRequired(blackboard, "SetAssetDirty");
+                InvokeRequired(graph, "SetAssetDirty", true);
+                InvokeRequired(graph, "BuildRuntimeGraph", true);
+                EditorUtility.SetDirty(graph);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.ImportAsset(GuardGraphPath, ImportAssetOptions.ForceUpdate);
+
+                var savedGraph = AssetDatabase.LoadMainAssetAtPath(GuardGraphPath);
+                Selection.activeObject = savedGraph;
+                AssetDatabase.OpenAsset(savedGraph);
+                Debug.Log(
+                    "P11 Guard graph created with four ordered state actions and a global-alert interrupt.",
+                    savedGraph);
+            }
+            catch (Exception exception)
+            {
+                if (createdAsset && AssetDatabase.LoadMainAssetAtPath(GuardGraphPath) != null)
+                {
+                    AssetDatabase.DeleteAsset(GuardGraphPath);
+                }
+
+                Debug.LogError(
+                    "P11 could not create the Guard Behavior graph. Its partial asset was removed.\n" +
                     Unwrap(exception));
             }
         }

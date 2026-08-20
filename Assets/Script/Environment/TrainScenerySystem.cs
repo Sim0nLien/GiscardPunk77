@@ -83,8 +83,14 @@ public sealed class TrainScenerySystem : MonoBehaviour
         [Tooltip("Random local scale multiplier, chosen independently on X, Y and Z.")]
         public Vector3 maximumScale = Vector3.one;
 
-        [Tooltip("Random rotation around local Y, in degrees.")]
+        [Tooltip("Random rotation around local Y, in degrees, applied on both sides.")]
         public Vector2 yRotation = new Vector2(0f, 360f);
+
+        [Tooltip("Additional local Y rotation for objects placed on the left side of the train (negative X).")]
+        public Vector2 leftSideYRotation = Vector2.zero;
+
+        [Tooltip("Additional local Y rotation for objects placed on the right side of the train (positive X).")]
+        public Vector2 rightSideYRotation = Vector2.zero;
 
         [Tooltip("Disable prefab colliders because exterior scenery should not interact with the player.")]
         public bool disableColliders = true;
@@ -174,7 +180,9 @@ public sealed class TrainScenerySystem : MonoBehaviour
             despawnDistance = 75f,
             minimumScale = new Vector3(1.5f, 1.2f, 1.5f),
             maximumScale = new Vector3(4f, 4.5f, 4f),
-            yRotation = new Vector2(-8f, 8f)
+            yRotation = new Vector2(-8f, 8f),
+            leftSideYRotation = new Vector2(90f, 90f),
+            rightSideYRotation = new Vector2(-90f, -90f)
         }
     };
 
@@ -397,7 +405,8 @@ public sealed class TrainScenerySystem : MonoBehaviour
             pooledObject.BaseScale,
             scaleMultiplier);
 
-        float yRotation = RandomRange(layer.yRotation);
+        float yRotation = RandomRange(layer.yRotation)
+            + RandomRange(x < 0f ? layer.leftSideYRotation : layer.rightSideYRotation);
         pooledObject.Transform.localRotation = pooledObject.BaseRotation
             * Quaternion.Euler(0f, yRotation, 0f);
         pooledObject.GameObject.SetActive(true);

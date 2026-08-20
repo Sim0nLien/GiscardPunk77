@@ -1,6 +1,6 @@
 # Contrat d'implémentation PNJ — GiscardPunk 1977
 
-> **Statut :** baseline P00 auditée et H0 confirmée. P09 est validé par l'utilisateur. P10 est livré à la porte humaine H4 ; P11 n'est pas commencé.
+> **Statut :** baseline P00 auditée et H0 confirmée. P09 est validé par l'utilisateur. P10 et P11 sont livrés à la porte humaine H4 ; P12 n'est pas commencé.
 
 ## But de la tranche
 
@@ -85,7 +85,7 @@ Le canal de discussion durable est `.agents/ingeesclave/FEEDBACK.md`. L'utilisat
 
 ## Dépendances du prochain lot
 
-P10 dépend de P05, P08 et P09, tous validés par l'utilisateur. Après audit des huit asmdefs résolus, `GiscardPunk77.AI` référence uniquement l'assembly runtime `Unity.Behavior`, sans inverser `GiscardPunk77.Core <- GiscardPunk77.Gameplay <- GiscardPunk77.AI`. L'implémentation P10 est arrêtée à H4 ; P11 attend la validation humaine du graphe, du debug et de l'échec explicite.
+P10 dépend de P05, P08 et P09, tous validés par l'utilisateur. Après audit des huit asmdefs résolus, `GiscardPunk77.AI` référence uniquement l'assembly runtime `Unity.Behavior`, sans inverser `GiscardPunk77.Core <- GiscardPunk77.Gameplay <- GiscardPunk77.AI`. P11 réutilise ce socle avec un contexte spécialisé, quatre actions fines et une patrouille ancrée au poste. Les deux lots sont arrêtés à H4 pour la lecture/debug du graphe et la boucle visuelle de dix minutes ; P12 attend cette validation humaine.
 
 ## H0 — décision confirmée
 

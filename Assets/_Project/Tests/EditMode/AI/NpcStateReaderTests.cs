@@ -80,6 +80,7 @@ namespace GiscardPunk77.AI.Tests
             npc = new GameObject("State reader NPC");
             serviceObject = new GameObject("State reader alert service");
             health = npc.AddComponent<Health>();
+            health.ResetHealth();
             var motor = npc.AddComponent<NpcMotor>();
             var alertService = serviceObject.AddComponent<AlertService>();
             var context = npc.AddComponent<NpcContext>();

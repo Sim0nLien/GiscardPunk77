@@ -1,0 +1,710 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7925387520985580173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db920e62f70f420bb33c771449926fa4, type: 3}
+  m_Name: P11 Guard Routine
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraph
+  Graphs:
+  - rid: 2324213020083879936
+  m_DebugInfo: {fileID: 0}
+  m_WasCompileWithPlaceholderNode: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 2324213020083879936
+      type: {class: BehaviorGraphModule, ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        AuthoringAssetID:
+          m_Value0: 10665702307137091976
+          m_Value1: 17529923067998116426
+        m_DebugInfo: {fileID: 0}
+        BlackboardReference:
+          rid: 2324213020083879937
+        BlackboardGroupReferences: []
+        Root:
+          rid: 2324213020083879983
+        m_ActiveNodes: []
+        m_NodesToTick: []
+        m_NodesToEnd:
+          rid: 2324213020083879939
+        m_EndedNodes:
+          rid: 2324213020083879940
+        m_VersionTimestamp: 639228533090395863
+    - rid: 2324213020083879937
+      type: {class: BlackboardReference, ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        m_Blackboard:
+          rid: 2324213020083879941
+        m_Source: {fileID: -3839419031635677675}
+    - rid: 2324213020083879939
+      type: {class: 'Stack`1[[Unity.Behavior.Node, Unity.Behavior]]', ns: System.Collections.Generic, asm: mscorlib}
+      data: 
+    - rid: 2324213020083879940
+      type: {class: 'HashSet`1[[Unity.Behavior.Node, Unity.Behavior]]', ns: System.Collections.Generic, asm: System.Core}
+      data: 
+    - rid: 2324213020083879941
+      type: {class: Blackboard, ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        m_Variables:
+        - rid: 2324213020083879949
+        - rid: 2324213020083879950
+    - rid: 2324213020083879949
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 0}
+    - rid: 2324213020083879950
+      type: {class: 'BlackboardVariable`1[[GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 3557691458302808955
+          m_Value1: 9499609500125531604
+        Name: Guard Context
+        m_Value: {fileID: 0}
+    - rid: 2324213020083879983
+      type: {class: Start, ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        ID:
+          m_Value0: 5290668658607208636
+          m_Value1: 11277295325951079536
+        Graph:
+          rid: 2324213020083879936
+        m_Parent:
+          rid: -2
+        m_Child:
+          rid: 2324213020083879984
+        Repeat: 1
+        AllowMultipleRepeatsPerTick: 0
+    - rid: 2324213020083879984
+      type: {class: GuardRoutineComposite, ns: GiscardPunk77.AI.Behavior.Guard.Nodes, asm: GiscardPunk77.AI}
+      data:
+        ID:
+          m_Value0: 12679365917828327241
+          m_Value1: 937174406307794792
+        Graph:
+          rid: 2324213020083879936
+        m_Parent:
+          rid: 2324213020083879983
+        m_Children:
+        - rid: 2324213020083879985
+        - rid: 2324213020083879986
+        - rid: 2324213020083879987
+        - rid: 2324213020083879988
+        Context:
+          rid: 2324213020083879950
+    - rid: 2324213020083879985
+      type: {class: GuardIdleAction, ns: GiscardPunk77.AI.Behavior.Guard.Nodes, asm: GiscardPunk77.AI}
+      data:
+        ID:
+          m_Value0: 16432416920413952902
+          m_Value1: 2871134054192421431
+        Graph:
+          rid: 2324213020083879936
+        m_Parent:
+          rid: 2324213020083879984
+        Context:
+          rid: 2324213020083879950
+    - rid: 2324213020083879986
+      type: {class: GuardPatrolAction, ns: GiscardPunk77.AI.Behavior.Guard.Nodes, asm: GiscardPunk77.AI}
+      data:
+        ID:
+          m_Value0: 2098654790901782135
+          m_Value1: 12312785178433362139
+        Graph:
+          rid: 2324213020083879936
+        m_Parent:
+          rid: 2324213020083879984
+        Context:
+          rid: 2324213020083879950
+    - rid: 2324213020083879987
+      type: {class: GuardSuspiciousAction, ns: GiscardPunk77.AI.Behavior.Guard.Nodes, asm: GiscardPunk77.AI}
+      data:
+        ID:
+          m_Value0: 16097590230079575695
+          m_Value1: 6705643311853172864
+        Graph:
+          rid: 2324213020083879936
+        m_Parent:
+          rid: 2324213020083879984
+        Context:
+          rid: 2324213020083879950
+    - rid: 2324213020083879988
+      type: {class: GuardInvestigateLastKnownPositionAction, ns: GiscardPunk77.AI.Behavior.Guard.Nodes, asm: GiscardPunk77.AI}
+      data:
+        ID:
+          m_Value0: 15998424702577333332
+          m_Value1: 4479460800157494171
+        Graph:
+          rid: 2324213020083879936
+        m_Parent:
+          rid: 2324213020083879984
+        Context:
+          rid: 2324213020083879950
+--- !u!114 &-5512988673128878748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b27bb6d9a2c8d540a10dff10acc543e, type: 3}
+  m_Name: P11 Guard Routine Debug Info
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraphDebugInfo
+  m_CodeBreakPointsList: []
+--- !u!114 &-3839419031635677675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
+  m_Name: P11 Guard Routine Blackboard
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.RuntimeBlackboardAsset
+  VersionTimestamp: 639228533089421202
+  AssetID:
+    m_Value0: 0
+    m_Value1: 0
+  m_Blackboard:
+    m_Variables:
+    - rid: 2324213020083879943
+    - rid: 2324213020083879955
+  m_SharedBlackboardVariableGuids: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 2324213020083879943
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 0}
+    - rid: 2324213020083879955
+      type: {class: 'BlackboardVariable`1[[GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 3557691458302808955
+          m_Value1: 9499609500125531604
+        Name: Guard Context
+        m_Value: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad8f2220607dac4db5082ff333fafb8, type: 3}
+  m_Name: P11 Guard Routine
+  m_EditorClassIdentifier: Unity.Behavior.Authoring::Unity.Behavior.BehaviorAuthoringGraph
+  Blackboard: {fileID: 2814075398265633324}
+  m_Description: 
+  m_Nodes:
+  - rid: 2324213020083879944
+  - rid: 2324213020083879956
+  - rid: 2324213020083879957
+  - rid: 2324213020083879958
+  - rid: 2324213020083879959
+  - rid: 2324213020083879960
+  m_VersionTimestamp: 639228533090395863
+  m_SerializedVersion: 1
+  m_DebugInfo: {fileID: -5512988673128878748}
+  m_RuntimeGraph: {fileID: -7925387520985580173}
+  AssetID:
+    m_Value0: 10665702307137091976
+    m_Value1: 17529923067998116426
+  Story:
+    Story: 
+    StoryVariableNames: []
+    Variables: []
+  m_NodeModelsInfo:
+  - Name: On Start
+    Story: 
+    RuntimeTypeString: Unity.Behavior.Start, Unity.Behavior, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    RuntimeTypeID:
+      m_Value0: 3335272451348827663
+      m_Value1: 11549843281177505721
+    Variables: []
+    NamedChildren: []
+    IsPlaceholder: 0
+  - Name: Guard Routine
+    Story: 'Run non-combat routine for [Context]'
+    RuntimeTypeString: GiscardPunk77.AI.Behavior.Guard.Nodes.GuardRoutineComposite,
+      GiscardPunk77.AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    RuntimeTypeID:
+      m_Value0: 8308046148813933383
+      m_Value1: 1266741290836037542
+    Variables:
+    - Name: Context
+      Type:
+        m_SerializableType: GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    NamedChildren: []
+    IsPlaceholder: 0
+  - Name: Guard Idle
+    Story: 'Idle guard [Context]'
+    RuntimeTypeString: GiscardPunk77.AI.Behavior.Guard.Nodes.GuardIdleAction, GiscardPunk77.AI,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    RuntimeTypeID:
+      m_Value0: 4704696295184827773
+      m_Value1: 10480929935831139219
+    Variables:
+    - Name: Context
+      Type:
+        m_SerializableType: GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    NamedChildren: []
+    IsPlaceholder: 0
+  - Name: Guard Patrol
+    Story: 'Patrol guard [Context]'
+    RuntimeTypeString: GiscardPunk77.AI.Behavior.Guard.Nodes.GuardPatrolAction, GiscardPunk77.AI,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    RuntimeTypeID:
+      m_Value0: 1893649584926327818
+      m_Value1: 12327469405028711609
+    Variables:
+    - Name: Context
+      Type:
+        m_SerializableType: GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    NamedChildren: []
+    IsPlaceholder: 0
+  - Name: Guard Suspicious
+    Story: 'Orient suspicious guard [Context]'
+    RuntimeTypeString: GiscardPunk77.AI.Behavior.Guard.Nodes.GuardSuspiciousAction,
+      GiscardPunk77.AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    RuntimeTypeID:
+      m_Value0: 8017108161654590048
+      m_Value1: 3461454150654231193
+    Variables:
+    - Name: Context
+      Type:
+        m_SerializableType: GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    NamedChildren: []
+    IsPlaceholder: 0
+  - Name: Guard Investigate Last Known Position
+    Story: 'Investigate last known position for [Context]'
+    RuntimeTypeString: GiscardPunk77.AI.Behavior.Guard.Nodes.GuardInvestigateLastKnownPositionAction,
+      GiscardPunk77.AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    RuntimeTypeID:
+      m_Value0: 16087627230487326577
+      m_Value1: 4656551555548259483
+    Variables:
+    - Name: Context
+      Type:
+        m_SerializableType: GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    NamedChildren: []
+    IsPlaceholder: 0
+  m_Blackboards: []
+  m_MainBlackboardAuthoringAsset: {fileID: 2814075398265633324}
+  m_CommandBuffer:
+    m_Commands: []
+  m_SubgraphsInfo: []
+  m_BlackboardMissingManagedRef: 0
+  m_GraphMissingManagedRef: 0
+  m_HasMissingTypeInManagedRef: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 2324213020083879944
+      type: {class: StartNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        Position: {x: 0, y: 0}
+        ID:
+          m_Value0: 5290668658607208636
+          m_Value1: 11277295325951079536
+        Parents: []
+        PortModels:
+        - rid: 2324213020083879945
+        NodeType:
+          m_SerializableType: Unity.Behavior.Start, Unity.Behavior, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        NodeTypeID:
+          m_Value0: 3335272451348827663
+          m_Value1: 11549843281177505721
+        m_FieldValues: []
+        Repeat: 1
+        AllowMultipleRepeatsPerTick: 0
+    - rid: 2324213020083879945
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: OutputPort
+        m_PortDataFlowType: 1
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 2324213020083879944
+        m_Connections:
+        - rid: 2324213020083879961
+    - rid: 2324213020083879956
+      type: {class: CompositeNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        Position: {x: 0, y: 180}
+        ID:
+          m_Value0: 12679365917828327241
+          m_Value1: 937174406307794792
+        Parents: []
+        PortModels:
+        - rid: 2324213020083879961
+        - rid: 2324213020083879962
+        NodeType:
+          m_SerializableType: GiscardPunk77.AI.Behavior.Guard.Nodes.GuardRoutineComposite,
+            GiscardPunk77.AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        NodeTypeID:
+          m_Value0: 8308046148813933383
+          m_Value1: 1266741290836037542
+        m_FieldValues:
+        - rid: 2324213020083879963
+    - rid: 2324213020083879957
+      type: {class: ActionNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        Position: {x: -480, y: 400}
+        ID:
+          m_Value0: 16432416920413952902
+          m_Value1: 2871134054192421431
+        Parents: []
+        PortModels:
+        - rid: 2324213020083879964
+        - rid: 2324213020083879965
+        NodeType:
+          m_SerializableType: GiscardPunk77.AI.Behavior.Guard.Nodes.GuardIdleAction,
+            GiscardPunk77.AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        NodeTypeID:
+          m_Value0: 4704696295184827773
+          m_Value1: 10480929935831139219
+        m_FieldValues:
+        - rid: 2324213020083879966
+    - rid: 2324213020083879958
+      type: {class: ActionNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        Position: {x: -160, y: 400}
+        ID:
+          m_Value0: 2098654790901782135
+          m_Value1: 12312785178433362139
+        Parents: []
+        PortModels:
+        - rid: 2324213020083879967
+        - rid: 2324213020083879968
+        NodeType:
+          m_SerializableType: GiscardPunk77.AI.Behavior.Guard.Nodes.GuardPatrolAction,
+            GiscardPunk77.AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        NodeTypeID:
+          m_Value0: 1893649584926327818
+          m_Value1: 12327469405028711609
+        m_FieldValues:
+        - rid: 2324213020083879969
+    - rid: 2324213020083879959
+      type: {class: ActionNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        Position: {x: 160, y: 400}
+        ID:
+          m_Value0: 16097590230079575695
+          m_Value1: 6705643311853172864
+        Parents: []
+        PortModels:
+        - rid: 2324213020083879970
+        - rid: 2324213020083879971
+        NodeType:
+          m_SerializableType: GiscardPunk77.AI.Behavior.Guard.Nodes.GuardSuspiciousAction,
+            GiscardPunk77.AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        NodeTypeID:
+          m_Value0: 8017108161654590048
+          m_Value1: 3461454150654231193
+        m_FieldValues:
+        - rid: 2324213020083879972
+    - rid: 2324213020083879960
+      type: {class: ActionNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        Position: {x: 480, y: 400}
+        ID:
+          m_Value0: 15998424702577333332
+          m_Value1: 4479460800157494171
+        Parents: []
+        PortModels:
+        - rid: 2324213020083879973
+        - rid: 2324213020083879974
+        NodeType:
+          m_SerializableType: GiscardPunk77.AI.Behavior.Guard.Nodes.GuardInvestigateLastKnownPositionAction,
+            GiscardPunk77.AI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        NodeTypeID:
+          m_Value0: 16087627230487326577
+          m_Value1: 4656551555548259483
+        m_FieldValues:
+        - rid: 2324213020083879975
+    - rid: 2324213020083879961
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: InputPort
+        m_PortDataFlowType: 0
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 2324213020083879956
+        m_Connections:
+        - rid: 2324213020083879945
+    - rid: 2324213020083879962
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: OutputPort
+        m_PortDataFlowType: 1
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 2324213020083879956
+        m_Connections:
+        - rid: 2324213020083879964
+        - rid: 2324213020083879967
+        - rid: 2324213020083879970
+        - rid: 2324213020083879973
+    - rid: 2324213020083879963
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: Context
+        Type:
+          m_SerializableType: GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 2324213020083879976
+        LinkedVariable:
+          rid: 2324213020083879977
+    - rid: 2324213020083879964
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: InputPort
+        m_PortDataFlowType: 0
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 2324213020083879957
+        m_Connections:
+        - rid: 2324213020083879962
+    - rid: 2324213020083879965
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: OutputPort
+        m_PortDataFlowType: 1
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 2324213020083879957
+        m_Connections: []
+    - rid: 2324213020083879966
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: Context
+        Type:
+          m_SerializableType: GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 2324213020083879978
+        LinkedVariable:
+          rid: 2324213020083879977
+    - rid: 2324213020083879967
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: InputPort
+        m_PortDataFlowType: 0
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 2324213020083879958
+        m_Connections:
+        - rid: 2324213020083879962
+    - rid: 2324213020083879968
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: OutputPort
+        m_PortDataFlowType: 1
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 2324213020083879958
+        m_Connections: []
+    - rid: 2324213020083879969
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: Context
+        Type:
+          m_SerializableType: GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 2324213020083879979
+        LinkedVariable:
+          rid: 2324213020083879977
+    - rid: 2324213020083879970
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: InputPort
+        m_PortDataFlowType: 0
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 2324213020083879959
+        m_Connections:
+        - rid: 2324213020083879962
+    - rid: 2324213020083879971
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: OutputPort
+        m_PortDataFlowType: 1
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 2324213020083879959
+        m_Connections: []
+    - rid: 2324213020083879972
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: Context
+        Type:
+          m_SerializableType: GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 2324213020083879980
+        LinkedVariable:
+          rid: 2324213020083879977
+    - rid: 2324213020083879973
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: InputPort
+        m_PortDataFlowType: 0
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 2324213020083879960
+        m_Connections:
+        - rid: 2324213020083879962
+    - rid: 2324213020083879974
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: OutputPort
+        m_PortDataFlowType: 1
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 2324213020083879960
+        m_Connections: []
+    - rid: 2324213020083879975
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: Context
+        Type:
+          m_SerializableType: GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 2324213020083879981
+        LinkedVariable:
+          rid: 2324213020083879977
+    - rid: 2324213020083879976
+      type: {class: 'BlackboardVariable`1[[GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+    - rid: 2324213020083879977
+      type: {class: 'TypedVariableModel`1[[GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 3557691458302808955
+          m_Value1: 9499609500125531604
+        Name: Guard Context
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 2324213020083879978
+      type: {class: 'BlackboardVariable`1[[GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+    - rid: 2324213020083879979
+      type: {class: 'BlackboardVariable`1[[GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+    - rid: 2324213020083879980
+      type: {class: 'BlackboardVariable`1[[GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+    - rid: 2324213020083879981
+      type: {class: 'BlackboardVariable`1[[GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+--- !u!114 &2814075398265633324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd922ae02c94c87a66e46a10a7319b9, type: 3}
+  m_Name: P11 Guard Routine Blackboard
+  m_EditorClassIdentifier: Unity.Behavior.Authoring::Unity.Behavior.BehaviorBlackboardAuthoringAsset
+  AssetID:
+    m_Value0: 0
+    m_Value1: 0
+  m_Variables:
+  - rid: 2324213020083879946
+  - rid: 2324213020083879982
+  m_VersionTimestamp: 639228533089421202
+  m_CommandBuffer:
+    m_Commands: []
+  m_RuntimeBlackboardAsset: {fileID: -3839419031635677675}
+  references:
+    version: 2
+    RefIds:
+    - rid: 2324213020083879946
+      type: {class: 'TypedVariableModel`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 2324213020083879982
+      type: {class: 'TypedVariableModel`1[[GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 3557691458302808955
+          m_Value1: 9499609500125531604
+        Name: Guard Context
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}

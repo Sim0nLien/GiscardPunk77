@@ -1,0 +1,398 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &273896678896880101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6077601584409574364}
+  - component: {fileID: 3328020872439198872}
+  - component: {fileID: 4160500083400918968}
+  - component: {fileID: 427597098865423194}
+  - component: {fileID: 1240179681618469056}
+  - component: {fileID: 8691714606809925256}
+  - component: {fileID: 8821203558358190795}
+  - component: {fileID: 5343454979785265844}
+  - component: {fileID: 7206704689580349858}
+  - component: {fileID: 817435896420421488}
+  - component: {fileID: 1651289794819185959}
+  - component: {fileID: 185638666622495503}
+  - component: {fileID: 9101488745477346497}
+  - component: {fileID: 5747335406825336318}
+  - component: {fileID: 1819547179337320945}
+  - component: {fileID: 3924813506441547963}
+  m_Layer: 0
+  m_Name: Guard Capsule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6077601584409574364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2998618957998190286}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3328020872439198872
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!136 &4160500083400918968
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &427597098865423194
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 12e1834a47190dc4ba14424e07b2d116, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1240179681618469056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23cafee36c6e4e2caf98ee102d302d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GiscardPunk77.Core::GiscardPunk77.Core.ActorIdentityComponent
+  kind: 2
+  teamId: 2
+--- !u!114 &8691714606809925256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d9104a2dba4c845a447a43696b1169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GiscardPunk77.Gameplay::GiscardPunk77.Gameplay.Health
+  maxHealth: 100
+--- !u!195 &8821203558358190795
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 12
+  avoidancePriority: 50
+  m_AngularSpeed: 360
+  m_StoppingDistance: 0.08
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &5343454979785265844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7024506c4814dd991ac7ab0f61f7a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GiscardPunk77.AI::GiscardPunk77.AI.Navigation.NpcMotor
+  agent: {fileID: 8821203558358190795}
+  destinationSampleDistance: 1
+  stagnationCheckInterval: 0.5
+  minimumProgressDistance: 0.05
+  stagnationChecksBeforeRecalculate: 3
+  recalculationCooldown: 0.5
+  maximumRecalculationAttempts: 2
+  manualRotationSpeed: 360
+--- !u!114 &7206704689580349858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b2f19b728f4032914fe695bb0a82fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GiscardPunk77.AI::GiscardPunk77.AI.Perception.NpcVisionSensor
+  eye: {fileID: 2998618957998190286}
+  targetSource: {fileID: 0}
+  maximumDistance: 12
+  fieldOfViewDegrees: 100
+  standingExposureSeconds: 0.6
+  crouchingDistanceMultiplier: 0.65
+  crouchingExposureMultiplier: 1.75
+  occlusionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  samplesPerSecond: 8
+  drawGizmos: 1
+  lastDetectionProgress: 0
+  lastRayBlocked: 0
+  lastTargetDetected: 0
+--- !u!114 &817435896420421488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 525f18e52847422caa8879e99e296cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GiscardPunk77.AI::GiscardPunk77.AI.Perception.NpcAwareness
+  config: {fileID: 11400000, guid: 56686fba47814c709061fdf6be20d143, type: 2}
+  visionSensor: {fileID: 7206704689580349858}
+  suspicion: 0
+  state: 0
+  hasLastSeenPosition: 0
+  lastSeenPosition: {x: 0, y: 0, z: 0}
+  lastSeenTime: -Infinity
+--- !u!114 &1651289794819185959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e593dbd3c84c4848840835534c2b166d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GiscardPunk77.AI::GiscardPunk77.AI.Coordination.NpcAlertReporter
+  awareness: {fileID: 0}
+  alertService: {fileID: 0}
+--- !u!114 &185638666622495503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879a8bad304b41b18ef06da0408485e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GiscardPunk77.AI::GiscardPunk77.AI.Behavior.NpcContext
+  identity: {fileID: 1240179681618469056}
+  health: {fileID: 8691714606809925256}
+  motor: {fileID: 5343454979785265844}
+  vision: {fileID: 7206704689580349858}
+  awareness: {fileID: 817435896420421488}
+  alertService: {fileID: 0}
+  lastValidationError: 
+--- !u!114 &9101488745477346497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c92694ab8822a49a2efc9378664478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GiscardPunk77.AI::GiscardPunk77.AI.Behavior.Guard.GuardPatrolRoute
+  postLocalPoints:
+  - {x: 0, y: 0, z: 3}
+  - {x: 3, y: 0, z: 3}
+  - {x: 3, y: 0, z: 0}
+--- !u!114 &5747335406825336318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ab5b8c6cad1634986383a277e6060d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GiscardPunk77.AI::GiscardPunk77.AI.Behavior.Guard.GuardContext
+  npc: {fileID: 185638666622495503}
+  config: {fileID: 11400000, guid: 526df7a3e219e8c488d023644c646fc1, type: 2}
+  patrolRoute: {fileID: 9101488745477346497}
+  currentState: 0
+  requestedState: 0
+  postPosition: {x: 0, y: 0, z: 0}
+  patrolPointIndex: 0
+  transitionHistory: []
+  lastValidationError: 
+--- !u!114 &1819547179337320945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65bb7e6db8e78d44eae48795010837d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GiscardPunk77.AI::GiscardPunk77.AI.Behavior.Guard.GuardStatePresenter
+  context: {fileID: 5747335406825336318}
+  renderers:
+  - {fileID: 427597098865423194}
+--- !u!114 &3924813506441547963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273896678896880101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraphAgent
+  m_Graph: {fileID: -7925387520985580173, guid: 8879f830bd2f04944a1af41f27cc46f3, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 2324213020083879989
+  - rid: 2324213020083879990
+  m_OriginalGraph: {fileID: -7925387520985580173, guid: 8879f830bd2f04944a1af41f27cc46f3, type: 2}
+  m_IsInitialised: 0
+  m_IsStarted: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 2324213020083879989
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 273896678896880101}
+    - rid: 2324213020083879990
+      type: {class: 'BlackboardVariable`1[[GiscardPunk77.AI.Behavior.Guard.GuardContext, GiscardPunk77.AI]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 3557691458302808955
+          m_Value1: 9499609500125531604
+        Name: Guard Context
+        m_Value: {fileID: 5747335406825336318}
+--- !u!1 &8567286751138789956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2998618957998190286}
+  m_Layer: 0
+  m_Name: Vision Eye
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2998618957998190286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567286751138789956}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.65, z: 0.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6077601584409574364}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -184,6 +184,18 @@
 - Preuves : `Packages/com.unity.behavior/package.json`, `Packages/packages-lock.json`, les huit asmdefs audités et `.agents/ingeesclave/REPORTS/P10.md`.
 - Remplace : aucune
 
+### DEC-016 — Patrouille ancrée au poste et alerte comme sortie de la routine P11
+
+- Date : `2026-08-20`
+- Statut : `accepted`
+- Lots concernés : `P11`, `P13`
+- Décideur : devis P11 et implémentation technique vérifiée
+- Contexte : des points enfants de la capsule se déplaceraient avec elle, tandis que le combat futur doit pouvoir prendre la main sans laisser une route de patrouille active.
+- Décision : écrire les points comme offsets relatifs à une position/orientation de poste capturée au démarrage ; laisser quatre nodes fins commander seulement `NpcMotor` ; traiter `AlertService.Alerted` comme une interruption immédiate qui annule le moteur et termine le graphe non combattant en `Failure`.
+- Conséquences : chaque instance conserve une petite route réutilisable sans objets de scène cachés ; P13 pourra brancher sa priorité combat après l'échec d'alerte ; le prefab exige toujours une référence explicite au service de scène.
+- Preuves : `GuardPatrolRoute.cs`, `GuardContext.cs`, graphe `P11 Guard Routine.asset`, prefab `Guard Capsule.prefab` et 28/28 tests AI Edit Mode.
+- Remplace : aucune
+
 ## Modèle d'entrée
 
 ### DEC-XXX — Titre court

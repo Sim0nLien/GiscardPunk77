@@ -1,6 +1,6 @@
 # Ingéesclave — Index des comptes rendus de GiscardPunk77
 
-> Dernière mise à jour : 2026-08-15
+> Dernière mise à jour : 2026-08-20
 > Un rapport par lot ; conserver les lots terminés et leurs preuves.
 
 | Lot | Titre | Statut | Dernière mise à jour | Compte rendu |
@@ -16,7 +16,9 @@
 | P07 | Signature du joueur et perception visuelle | complete | 2026-08-15 | [P07](P07.md) |
 | P08 | Suspicion, mémoire courte et indicateur | complete | 2026-08-15 | [P08](P08.md) |
 | P09 | Alerte globale sans télépathie de position | complete | 2026-08-15 | [P09](P09.md) |
-| P10 | Installation et socle Unity Behavior | waiting_human | 2026-08-15 | [P10](P10.md) |
+| P10 | Installation et socle Unity Behavior | waiting_human | 2026-08-20 | [P10](P10.md) |
+| DEMO-2026-08-15 | Revue de démo disponible aujourd’hui | complete | 2026-08-15 | [DEMO-2026-08-15](DEMO-2026-08-15.md) |
+| P11 | Garde : repos, patrouille et investigation | waiting_human | 2026-08-20 | [P11](P11.md) |
 
 ## Légende
 

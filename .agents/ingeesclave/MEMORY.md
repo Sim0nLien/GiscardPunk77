@@ -1,6 +1,6 @@
 ﻿# Ingéesclave — Mémoire stable de GiscardPunk77
 
-> Dernière revue : 2026-08-15
+> Dernière revue : 2026-08-20
 > Contient uniquement des faits stables et vérifiés. Ne jamais stocker de secret.
 
 ## Identité du projet
@@ -37,7 +37,9 @@
 - P07 sépare `NpcVisionParameters`/`NpcVisionEvaluation` (calcul pur), `NpcVisionObservation` (instantané immutable) et `NpcVisionSensor` (sampling/raycast/gizmos). AI consomme uniquement `IVisibilityTarget`; les réglages sandbox initiaux sont 12 m, 100°, 0,6 s, portée accroupie 65 %, exposition accroupie 175 % et 8 Hz répartis. L'utilisateur a confirmé le 2026-08-15 que les tests P07 passent ; H3 sera réglée avec P08.
 - P08 sépare `NpcAwarenessModel` (suspicion/hystérésis), `NpcAwareness` (mémoire et abonnement P07) et `NpcAwarenessIndicator` (présentation billboard). `NpcAwarenessConfig.asset` est la source commune des valeurs : gain 0,9/s, décroissance 0,2/s, seuils 0,25/0,12 et 0,85/0,60. L'utilisateur a confirmé le 2026-08-15 que les tests P08 passent ; le réglage visuel H3 reste un suivi qualitatif historique.
 - L'utilisateur a confirmé le 2026-08-15 que les tests P09 passent. P09 ajoute `AlertService`, composant de scène explicitement référencé : il expose `Calm`/`Alerted` et un `AlertSnapshot` immutable (point/heure initiaux), sans `Transform`, `Update` ni singleton statique. `NpcAlertReporter` relaie uniquement l'entrée `Alerted` d'une `NpcAwareness` assignée et ne propage pas une position vivante.
-- P10 utilise `com.unity.behavior` 1.0.13, résolu et confirmé par l'utilisateur le 2026-08-15. Son assembly runtime exacte est `Unity.Behavior` (GUID `73907d139b13f8a43b7e3e95c329d30a`) ; les assemblies `Unity.Behavior.Authoring` et `Unity.Behavior.Editor` sont Editor-only et ne doivent pas entrer dans `GiscardPunk77.AI`. Le package est embarqué pour dix adaptations Unity 6000.5 réparties dans sept fichiers ; la chaîne Roslyn générée par Unity compile Behavior, AI, tests et Editor sans erreur, mais H4 doit encore confirmer l'import et le graphe dans l'interface.
+- P10 utilise `com.unity.behavior` 1.0.13, résolu et confirmé par l'utilisateur le 2026-08-15. Son assembly runtime exacte est `Unity.Behavior` (GUID `73907d139b13f8a43b7e3e95c329d30a`) ; les assemblies `Unity.Behavior.Authoring` et `Unity.Behavior.Editor` sont Editor-only et ne doivent pas entrer dans `GiscardPunk77.AI`. Le package est embarqué pour dix adaptations Unity 6000.5 réparties dans sept fichiers ; Unity a confirmé l'import et les cinq tests P10 dans la suite AI `28/28` le 2026-08-20. H4 doit encore confirmer le graphe minimal et son fallback dans l'interface.
+- P11 spécialise le socle avec `GuardConfig`, `GuardContext`, trois offsets de patrouille écrits depuis un poste capturé et quatre actions Behavior fines. Le graphe généré conserve l'ordre Idle, Patrol, Suspicious, InvestigateLastKnownPosition ; `GuardContext` annule `NpcMotor` dès l'événement global `Alerted`, conserve huit transitions et alimente une présentation par couleurs. Unity a généré le graphe et `Guard Capsule.prefab`; 28/28 tests AI Edit Mode passent le 2026-08-20. La boucle visuelle de dix minutes reste la porte H4.
+- Le guide daté `Docs/INGEESCLAVE/DEMO-2026-08-15.md` recense les démonstrations disponibles : `SampleScene` pour le FPS et les portes ; `NpcSandbox` pour les bancs P03 à P09. Il distingue explicitement les validations H2/H4 encore ouvertes.
 
 ## Conventions durables
 
@@ -65,6 +67,6 @@
 
 ## Préoccupations stables ouvertes
 
-- P10 doit encore être confirmé à la porte H4 dans l'éditeur : ouverture/débogage du graphe minimal et échec lisible lorsque le moteur est désactivé.
+- H4 doit encore confirmer dans l'éditeur la lisibilité/debug des graphes P10–P11 et la boucle Guard de dix minutes, dont suspicion, retour au poste, couleurs, historique et interruption globale.
 
 

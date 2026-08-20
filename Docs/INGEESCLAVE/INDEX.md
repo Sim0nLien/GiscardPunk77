@@ -1,6 +1,6 @@
 ﻿# Parcours d'apprentissage — GiscardPunk77
 
-> Dernière mise à jour : 2026-08-14
+> Dernière mise à jour : 2026-08-20
 > Ce dossier explique le projet avec des mots simples. Il complète les rapports techniques cachés dans `.agents/`.
 
 ## Commencer ici
@@ -25,7 +25,9 @@
 | P07 | Signature du joueur et perception visuelle | complete | 2026-08-15 | [P07](P07.md) |
 | P08 | Suspicion, mémoire courte et indicateur | complete | 2026-08-15 | [P08](P08.md) |
 | P09 | Alerte globale sans télépathie de position | complete | 2026-08-15 | [P09](P09.md) |
-| P10 | Comprendre le socle Unity Behavior | waiting_human | 2026-08-15 | [P10](P10.md) |
+| P10 | Comprendre le socle Unity Behavior | waiting_human | 2026-08-20 | [P10](P10.md) |
+| DEMO-2026-08-15 | Ce qui est montrable aujourd’hui | complete | 2026-08-15 | [Guide de démo](DEMO-2026-08-15.md) |
+| P11 | Comprendre la boucle non combattante du garde | waiting_human | 2026-08-20 | [P11](P11.md) |
 
 ## Lire un guide
 
@@ -35,7 +37,3 @@
 - **Cheminement** : qui parle à qui, ou ce qui se passe dans l'ordre.
 - **Essayer** : une vérification guidée, avec résultat attendu et signe d'échec.
 - **Limites** : ce qui n'existe pas encore ou ce qui doit être confirmé.
-
-
-
-

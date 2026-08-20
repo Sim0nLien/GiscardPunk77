@@ -261,6 +261,28 @@
 - Décision ou action : référencer seulement `Unity.Behavior` depuis AI ; embarquer la même version 1.0.13 avec les adaptations `EntityId`/drag-and-drop reproductibles pour Unity 6000.5 ; fournir contexte, nodes, cinq tests et protocole de debug.
 - Comment vérifier : suivre `Docs/INGEESCLAVE/P10.md`; Package Manager doit afficher 1.0.13 Embedded, les tests doivent être verts, le graphe doit s'ouvrir et le moteur désactivé doit produire un `Failure` explicite.
 
+### FB-018 — Revue de démo et guide daté
+
+- Date : `2026-08-15`
+- Lot concerné : `transversal`, `P03`–`P10`
+- Statut : `implemented`
+- Retour utilisateur :
+  > dans le présent, je souhaite que tu fasses une petite revue de ce que je peux déja utilsie afin de faire sous démo car je dois attendre token recharge, ce qui est déja tilisable.... Je souahite que tu écrives un guide pour la date d'aujjourd'hui
+- Réponse agent : le guide daté distingue la scène jouable, les bancs techniques déjà disponibles et les fonctions qui restent en validation.
+- Décision ou action : présenter `SampleScene` pour le FPS et les portes, puis `NpcSandbox` pour les bancs P03 à P09 ; ne pas présenter P10 comme validé avant H4.
+- Comment vérifier : ouvrir `Docs/INGEESCLAVE/DEMO-2026-08-15.md` et suivre le parcours choisi.
+
+### FB-019 — Demande de boucle non combattante Guard P11
+
+- Date : `2026-08-20`
+- Lot concerné : `P11`
+- Statut : `implemented`
+- Retour utilisateur :
+  > Crée `GuardConfig`, `GuardContext` si une spécialisation est nécessaire, des points de patrouille écrits et des nodes fins pour Idle, Patrol, Suspicious et InvestigateLastKnownPosition. Assemble un graphe Guard réutilisant le socle P10. En cas de suspicion, le garde peut s'orienter ou rejoindre la dernière position ; après un délai court sans contact, il revient à son poste. Une alerte globale interrompt immédiatement la routine. Ajoute un prefab capsule garde avec couleurs d'état temporaires et historique court des transitions.
+- Réponse agent : P11 fournit la configuration, le contexte spécialisé, trois points écrits, quatre nodes fins, le graphe, le prefab et les diagnostics demandés. Les validations automatiques passent ; la boucle visuelle de dix minutes reste à confirmer à H4.
+- Décision ou action : ancrer les points au poste capturé, déléguer tout mouvement à `NpcMotor`, annuler la route sur événement global et conserver huit transitions récentes sans modifier de scène.
+- Comment vérifier : suivre `Docs/INGEESCLAVE/P11.md`; rapporter la boucle bleu/vert, l'interruption jaune, l'investigation/retour orange, l'alerte rouge et l'absence de destination invalide pendant dix minutes.
+
 ## Modèle d'entrée
 
 ### FB-XXX — Titre court

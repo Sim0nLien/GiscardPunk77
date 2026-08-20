@@ -35,6 +35,12 @@ Chaque élément de `Layers` est une famille de décor indépendante.
 - `Minimum/Maximum Scale` et `Y Rotation` : variations visuelles aléatoires ;
 - `Pool Size` : nombre maximum d'objets recyclés pour la couche.
 
+### Orientation indépendante par côté
+
+`Y Rotation` reste la variation aléatoire commune. Les champs `Left Side Y Rotation` et `Right Side Y Rotation` s'y ajoutent respectivement pour les objets à gauche (X négatif) et à droite (X positif) du train.
+
+Dans `SampleScene`, les pylônes proches utilisent maintenant le prefab `Prefabs/Train/pilone_electrique`. Les bâtiments ont comme réglage initial `+90°` à gauche et `-90°` à droite : leur façade est donc tournée vers le train sur les deux côtés. Modifiez ces deux valeurs dans la couche concernée si l'orientation native d'un nouveau prefab est différente.
+
 La distance moyenne entre deux objets suit cette relation :
 
 `espacement = Train Speed × Speed Multiplier × Interval Seconds`
